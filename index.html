@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BrickDuck</title>
+  <style>
+    :root {
+      --fg: #111;
+      --muted: #888;
+      --line: #e5e5e5;
+      --bg: #fff;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html, body {
+      background: var(--bg);
+      color: var(--fg);
+      font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Apple SD Gothic Neo", "Pretendard", "Noto Sans KR", sans-serif;
+      font-size: 14px;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    a:hover { opacity: 0.55; }
+
+    /* ── 상단 헤더 ── */
+    header {
+      padding: 20px 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      border-bottom: 1px solid var(--line);
+      position: sticky;
+      top: 0;
+      background: var(--bg);
+      z-index: 10;
+    }
+
+    .logo {
+      font-size: 14px;
+      letter-spacing: 0.01em;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 24px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    /* ── 컨텐츠 ── */
+    main {
+      padding: 48px 32px 80px;
+      max-width: 1200px;
+    }
+
+    .intro {
+      max-width: 520px;
+      margin-bottom: 56px;
+    }
+
+    h1 {
+      font-size: 28px;
+      font-weight: 500;
+      letter-spacing: -0.005em;
+      margin-bottom: 16px;
+    }
+
+    .intro p {
+      color: var(--muted);
+      max-width: 440px;
+    }
+
+    .hero {
+      width: 100%;
+      max-width: 720px;
+      aspect-ratio: 4 / 3;
+      background: #f4f4f4;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      margin-bottom: 40px;
+    }
+
+    .hero img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .hero-placeholder {
+      color: #b5b5b5;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+    }
+
+    .meta {
+      max-width: 720px;
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      row-gap: 10px;
+      margin-bottom: 56px;
+      border-top: 1px solid var(--line);
+      padding-top: 20px;
+    }
+
+    .meta dt { color: var(--muted); }
+    .meta dd { color: var(--fg); }
+
+    .cta-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .cta {
+      display: inline-block;
+      padding: 12px 24px;
+      background: var(--fg);
+      color: #fff;
+      font-size: 13px;
+      letter-spacing: 0.02em;
+      border: 1px solid var(--fg);
+      transition: background 0.15s, color 0.15s;
+    }
+
+    .cta:hover {
+      background: #fff;
+      color: var(--fg);
+      opacity: 1;
+    }
+
+    .cta-note {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    /* ── 푸터 ── */
+    footer {
+      margin-top: 80px;
+      padding: 24px 32px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 12px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    @media (max-width: 640px) {
+      header { padding: 16px 20px; }
+      nav ul { gap: 16px; font-size: 12px; }
+      main { padding: 32px 20px 60px; }
+      h1 { font-size: 22px; }
+      .meta { grid-template-columns: 90px 1fr; }
+      footer { padding: 20px; flex-direction: column; gap: 4px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a class="logo" href="index.html">BrickDuck</a>
+    <nav>
+      <ul>
+        <li><a href="index.html">소개</a></li>
+        <li><a href="apply.html">신청하기</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="intro">
+      <h1>BrickDuck</h1>
+      <p>프로젝트 소개 문구가 들어가는 자리입니다. 짧게 두세 줄 정도로 분위기를 전해주세요.</p>
+    </section>
+
+    <div class="hero">
+      <!-- 이미지를 넣으려면 아래 주석을 풀고 src 경로를 본인 이미지 파일명으로 바꾸세요 -->
+      <!-- <img src="hero.jpg" alt="BrickDuck" /> -->
+      <span class="hero-placeholder">IMAGE</span>
+    </div>
+
+    <dl class="meta">
+      <dt>프로젝트</dt><dd>BrickDuck</dd>
+      <dt>기간</dt><dd>2026</dd>
+      <dt>형식</dt><dd>온라인 신청</dd>
+    </dl>
+
+    <div class="cta-row">
+      <a href="apply.html" class="cta">신청하기 →</a>
+      <span class="cta-note">소요시간 약 1분</span>
+    </div>
+  </main>
+
+  <footer>
+    <span>BrickDuck</span>
+    <span>© 2026</span>
+  </footer>
+</body>
+</html>
