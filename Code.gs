@@ -7,7 +7,7 @@
 
 function doPost(e) {
   try {
-    const sheet = SpreadsheetApp.getActiveSpreadsheet().getSheets()[0];
+    const sheet = SpreadsheetApp.openById("1bGI7O6K3jXUHgb9-nwZoQ-JB8Dix056XB2fgNhRswX4").getSheets()[0];
 
     // 시트가 비어있으면 헤더 자동 생성
     if (sheet.getLastRow() === 0) {
