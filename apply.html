@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BrickDuck — 신청하기</title>
+  <style>
+    :root {
+      --fg: #111;
+      --muted: #888;
+      --line: #e5e5e5;
+      --bg: #fff;
+      --error: #c00;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html, body {
+      background: var(--bg);
+      color: var(--fg);
+      font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Apple SD Gothic Neo", "Pretendard", "Noto Sans KR", sans-serif;
+      font-size: 14px;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    a:hover { opacity: 0.55; }
+
+    /* ── 상단 헤더 ── */
+    header {
+      padding: 20px 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      border-bottom: 1px solid var(--line);
+      position: sticky;
+      top: 0;
+      background: var(--bg);
+      z-index: 10;
+    }
+
+    .logo { font-size: 14px; }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 24px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    nav .current { color: var(--fg); }
+
+    /* ── 컨텐츠 ── */
+    main {
+      padding: 48px 32px 80px;
+      max-width: 560px;
+    }
+
+    .page-title {
+      font-size: 22px;
+      font-weight: 500;
+      letter-spacing: -0.005em;
+      margin-bottom: 12px;
+    }
+
+    .desc {
+      color: var(--muted);
+      margin-bottom: 48px;
+      max-width: 440px;
+    }
+
+    .field {
+      margin-bottom: 28px;
+    }
+
+    label {
+      display: block;
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 8px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    label .req {
+      color: var(--error);
+      margin-left: 4px;
+    }
+
+    input[type="text"],
+    input[type="tel"] {
+      width: 100%;
+      padding: 10px 0;
+      border: none;
+      border-bottom: 1px solid var(--line);
+      background: transparent;
+      font-size: 15px;
+      color: var(--fg);
+      font-family: inherit;
+      transition: border-color 0.15s ease;
+    }
+
+    input::placeholder { color: #c8c8c8; }
+
+    input:focus {
+      outline: none;
+      border-bottom-color: var(--fg);
+    }
+
+    /* 옵션 라디오 */
+    .options {
+      display: flex;
+      flex-direction: column;
+      border-top: 1px solid var(--line);
+    }
+
+    .option {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--line);
+      cursor: pointer;
+      font-size: 15px;
+      transition: padding-left 0.15s ease;
+    }
+
+    .option:hover { padding-left: 4px; }
+
+    .option input {
+      accent-color: var(--fg);
+      width: 14px;
+      height: 14px;
+    }
+
+    .option:has(input:checked) {
+      padding-left: 4px;
+    }
+
+    .option:has(input:checked) span {
+      font-weight: 500;
+    }
+
+    /* 액션 */
+    .actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-top: 40px;
+    }
+
+    .submit {
+      padding: 12px 24px;
+      background: var(--fg);
+      color: #fff;
+      border: 1px solid var(--fg);
+      font-size: 13px;
+      letter-spacing: 0.02em;
+      cursor: pointer;
+      font-family: inherit;
+      transition: background 0.15s, color 0.15s;
+    }
+
+    .submit:hover:not(:disabled) {
+      background: #fff;
+      color: var(--fg);
+    }
+
+    .submit:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .cancel {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .error {
+      color: var(--error);
+      font-size: 12px;
+      margin-top: 16px;
+      display: none;
+    }
+
+    /* ── 푸터 ── */
+    footer {
+      margin-top: 80px;
+      padding: 24px 32px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 12px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    @media (max-width: 640px) {
+      header { padding: 16px 20px; }
+      nav ul { gap: 16px; font-size: 12px; }
+      main { padding: 32px 20px 60px; }
+      .page-title { font-size: 20px; }
+      footer { padding: 20px; flex-direction: column; gap: 4px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a class="logo" href="index.html">BrickDuck</a>
+    <nav>
+      <ul>
+        <li><a href="index.html">소개</a></li>
+        <li><a class="current" href="apply.html">신청하기</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <h1 class="page-title">신청 정보 입력</h1>
+    <p class="desc">아래 정보를 입력해주세요. 입력하신 정보는 배송 안내 용도로만 사용됩니다.</p>
+
+    <form id="applyForm"
+          action="https://script.google.com/macros/s/AKfycbyWPUo8SpnEGYTrJ9vZbuSK4lGAzyhLB8qhvNwEVw4_L2IuCbgVNu5HYK93aWD0ALXLVA/exec"
+          method="POST"
+          target="hidden_iframe">
+      <div class="field">
+        <label for="name">이름<span class="req">*</span></label>
+        <input type="text" id="name" name="name" required autocomplete="name" />
+      </div>
+
+      <div class="field">
+        <label for="phone">연락처<span class="req">*</span></label>
+        <input type="tel" id="phone" name="phone" required autocomplete="tel" placeholder="010-0000-0000" />
+      </div>
+
+      <div class="field">
+        <label for="zipcode">우편번호<span class="req">*</span></label>
+        <input type="text" id="zipcode" name="zipcode" required autocomplete="postal-code" inputmode="numeric" />
+      </div>
+
+      <div class="field">
+        <label for="address">주소<span class="req">*</span></label>
+        <input type="text" id="address" name="address" required autocomplete="address-line1" />
+      </div>
+
+      <div class="field">
+        <label for="addressDetail">상세주소<span class="req">*</span></label>
+        <input type="text" id="addressDetail" name="addressDetail" required autocomplete="address-line2" />
+      </div>
+
+      <div class="field">
+        <label>옵션 선택<span class="req">*</span></label>
+        <div class="options">
+          <label class="option">
+            <input type="radio" name="option" value="옵션 A" required />
+            <span>a6 ver</span>
+          </label>
+          <label class="option">
+            <input type="radio" name="option" value="옵션 B" />
+            <span>brick version</span>
+          </label>
+          <label class="option">
+            <input type="radio" name="option" value="옵션 C" />
+            <span>duck version</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button type="submit" class="submit" id="submitBtn">제출하기 →</button>
+        <a class="cancel" href="index.html">취소</a>
+      </div>
+      <input type="hidden" name="timestamp" id="timestampField" />
+      <p class="error" id="errorMsg">제출에 실패했어요. 잠시 후 다시 시도해주세요.</p>
+    </form>
+
+    <!-- 폼 제출 결과를 숨겨서 받는 iframe -->
+    <iframe name="hidden_iframe" id="hidden_iframe" style="display:none"></iframe>
+  </main>
+
+  <footer>
+    <span>BrickDuck</span>
+    <span>© 2026</span>
+  </footer>
+
+  <script>
+    const form = document.getElementById("applyForm");
+    const btn = document.getElementById("submitBtn");
+    const errorMsg = document.getElementById("errorMsg");
+    const iframe = document.getElementById("hidden_iframe");
+    const tsField = document.getElementById("timestampField");
+
+    let submitted = false;
+
+    form.addEventListener("submit", function () {
+      // 제출 시각 자동 채우기
+      tsField.value = new Date().toISOString();
+
+      submitted = true;
+      btn.disabled = true;
+      btn.textContent = "제출 중...";
+    });
+
+    // 폼이 iframe으로 제출되고 응답이 돌아오면 done.html로 이동
+    iframe.addEventListener("load", function () {
+      if (submitted) {
+        window.location.href = "done.html";
+      }
+    });
+  </script>
+</body>
+</html>
